@@ -149,6 +149,9 @@ result = wrongText.replace(silverRegex, "blue");
 
 "Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1');
 
+const hello = " Hello World ";
+hello.replace(/^\s+|\s+$/g, '');
+
 // "\w" é um atalho para detectar qualquer letra, número e "_"
 /\w/g;
 
