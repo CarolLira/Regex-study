@@ -129,7 +129,25 @@ result = noquit.match(qRegex); // ['q', index: 0, input: 'qt', groups: undefined
 
 const sampleWord = "astronaut22";
 const pwRegex = /(?=\w{5})(?=\D*\d{2})/;
-result = pwRegex.test(sampleWord);
+result = sampleWord.match(pwRegex); // ['', index: 0, input: 'astronaut22', groups: undefined]
+
+// "(\w+)\s\1" procura por padrões que se repetem após espaços
+const repeatStr = "regex regex";
+const repeatRegex = /(\w+)\s\1/;
+result = repeatRegex.test(repeatStr); // true
+result = repeatStr.match(repeatRegex); // ['regex ', 'regex ', index: 0, input: 'regex regex', groups: undefined]
+
+const repeatNum = "42 42 42";
+const reRegex = /^(\d+)\s\1\s\1$/;
+result = repeatNum.match(reRegex); // ['42 42 42', '42', index: 0, input: '42 42 42', groups: undefined]
+
+// o símbolo "$" também pode servir para selecionar padrões entre parêntesis para
+// serem substituídos
+const wrongText = "The sky is silver";
+const silverRegex = /silver/;
+result = wrongText.replace(silverRegex, "blue");
+
+"Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1');
 
 // "\w" é um atalho para detectar qualquer letra, número e "_"
 /\w/g;
